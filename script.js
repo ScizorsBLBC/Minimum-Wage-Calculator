@@ -55,6 +55,25 @@ const federalWage = 7.25;
     { name: 'Wyoming', abbreviation: 'WY', wage: 5.15 },
   ];
 
+
+  // Add option element for each state 
+
+  // Loop through every state
+wages.forEach((stateWageObject) => {
+  
+  // - Create an option tag for each state
+  
+  const optionElement = document.createElement('option');
+  
+  // - Set property/values on option element
+
+  optionElement.innerText = stateWageObject.name;
+  optionElement.value = stateWageObject.abbreviation;
+
+  // - append that within our <select></select>
+  const stateYouLiveIn = document.querySelector('#stateYouLiveIn');
+  stateYouLiveIn.appendChild(optionElement);
+});
 // max number 52?
 
 // Need to enter responses for error messages "You must enter all fields" "Please use a number lower than 52"
@@ -63,17 +82,22 @@ const federalWage = 7.25;
 const onButtonClick = () => {
     console.log('did it work');
     // Need variable for num of weeks per year worked
+  const numOfWeeksWorkedElement = document.querySelector('#numWeeksWorked');
+  const numOfWeeksWorked = numOfWeeksWorkedElement.value;
 
-    // I need the variable for how many hours per year worked
+      // I need the variable for how many hours per week worked
+  const hoursPerWeekWorkedElement = document.querySelector('#hoursPerWeekWorked');
+  const hoursPerWeekWorked = hoursPerWeekWorkedElement.value;
+      // Need variable for which state you live in
+const stateYouLiveInElement = document.querySelector('#stateYouLiveIn');
+const stateYouLiveIn = stateYouLiveInElement.value;
+      // When we know the state, how do we get the wage value for that state?
 
-    // Need variable for which state you live in
+      // What is the result? numOfWeeksWorked * hoursPerWeekWorked * minimumWage
 
-    // When we know the state, how do we get the wage value for that state?
-
-    // What is the result? numOfWeeksWorked * hoursPerWeekWorked * minimumWage
-
-    // display the result on screen
-
+      // display the result on screen
+  const answerElement = document.querySelector('#answer');
+  answerElement.innerText = numOfWeeksWorked * hoursPerWeekWorked * minimumWage;
 };
    
 // what happens when they click the button in each case
