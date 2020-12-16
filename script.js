@@ -74,30 +74,71 @@ wages.forEach((stateWageObject) => {
   const stateYouLiveIn = document.querySelector('#stateYouLiveIn');
   stateYouLiveIn.appendChild(optionElement);
 });
-// max number 52?
-
-// Need to enter responses for error messages "You must enter all fields" "Please use a number lower than 52"
 
 // All this happens upon button click
 const onButtonClick = () => {
-    console.log('did it work');
-    // Need variable for num of weeks per year worked
-  const numOfWeeksWorkedElement = document.querySelector('#numWeeksWorked');
-  const numOfWeeksWorked = numOfWeeksWorkedElement.value;
+  let isValid = true
+  // Need variable for num of weeks per year worked
+  const numWeeksWorkedElement = document.querySelector('#numWeeksWorked');
+  const numWeeksWorked = Number(numWeeksWorkedElement.value);
+  console.log(typeof numWeeksWorked);
+  const numWeeksWorkedError = document.querySelector('#numWeeksWorkedError');
+  if (numWeeksWorked > 52 || numWeeksWorked < 1) {
+    numWeeksWorkedError.innerText = 'ERROR: Enter a number between 1 and 52'
+    isValid = false;
+  } else {
+    numWeeksWorkedError.innerText = '';
+  }
 
-      // I need the variable for how many hours per week worked
-  const hoursPerWeekWorkedElement = document.querySelector('#hoursPerWeekWorked');
-  const hoursPerWeekWorked = hoursPerWeekWorkedElement.value;
-      // Need variable for which state you live in
-const stateYouLiveInElement = document.querySelector('#stateYouLiveIn');
-const stateYouLiveIn = stateYouLiveInElement.value;
-      // When we know the state, how do we get the wage value for that state?
+  // I need the variable for how many hours per week worked
+  const hoursPerWeekWorkedElement = document.querySelector('#hoursPerWeek');
+  const hoursPerWeekWorked = Number(hoursPerWeekWorkedElement.value);
+  console.log(typeof hoursPerWeekWorked, hoursPerWeekWorked);
+  const hoursPerWeekWorkedError = document.querySelector('#hoursPerWeekError');
+  if (hoursPerWeekWorked > 168 || hoursPerWeekWorked < 1) {
+    hoursPerWeekWorkedError.innerText = 'ERROR: Enter a number between 1 and 168'
+    isValid = false;
+  } else {
+    hoursPerWeekWorkedError.innerText = '';
+  }
 
-      // What is the result? numOfWeeksWorked * hoursPerWeekWorked * minimumWage
+  // Need variable for which state you live in
+  const stateYouLiveInElement = document.querySelector('#stateYouLiveIn');
+  const stateYouLiveIn = stateYouLiveInElement.value;
+  console.log(typeof stateYouLiveIn, stateYouLiveIn);
+  const stateYouLiveInError = document.querySelector('#stateYouLiveInError');
+  if (stateYouLiveIn === '') {
+    stateYouLiveInError.innerText = 'ERROR: Please select your state from the drop down menu'
+    isValid = false;
+  } else {
+    stateYouLiveInError.innerText = '';
+  }
 
-      // display the result on screen
+  // When we know the state, how do we get the wage value for that state?
+  const minimumWageStateObject = wages.find((minimumWageObject) => {
+    return stateYouLiveIn === minimumWageObject.abbreviation;
+  });
+  console.log(minimumWageStateObject);
+
+  // What is the result? numOfWeeksWorked * hoursPerWeekWorked * minimumWage
+  let minimumWage;
+  // minimumWageStateObject.wage;
+  if (minimumWageStateObject !== undefined) {
+    minimumWage = minimumWageStateObject.wage;
+    if (minimumWage === undefined) {
+      minimumWage = federalWage;
+    }
+  
+  };
+    
+  // display the result on screen
   const answerElement = document.querySelector('#answer');
-  answerElement.innerText = numOfWeeksWorked * hoursPerWeekWorked * minimumWage;
+  if (isValid === true) {
+    answerElement.innerText = numWeeksWorked * hoursPerWeekWorked * minimumWage;
+  } else {
+    answerElement.innerText = 'ERROR: Please fix all errors above';
+  }
+  
 };
    
 // what happens when they click the button in each case

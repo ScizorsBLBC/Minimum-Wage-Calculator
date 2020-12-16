@@ -11,22 +11,31 @@
                 <label>
                     How many weeks per year do you typically work?
                 </label>
-                <input type="number"
-                id="numWeeksWorked"/>
-
+                <input 
+                    type="number"
+                    id="numWeeksWorked"
+                    placeholder="ex: 52"
+                />
+                <p id="numWeeksWorkedError"> </p>
             </div>
             <div>
                 <label>
                     Around how many hours per week do you work?
                 </label>
-                <input type="number" id="hoursPerWeek"/>
+                <input 
+                    type="number" 
+                    id="hoursPerWeek"
+                    placeholder="ex: 40"
+                />
+                <p id="hoursPerWeekError"> </p>
             </div>
             <div>
                 <select id="stateYouLiveIn"> 
-                    <option> 
+                    <option value=""> 
                         Select the State you live in
                     </option>
                 </select>
+                <p id="stateYouLiveInError"> </p>
             </div>
             <div>
                 <button> 
@@ -35,6 +44,13 @@
             </div>
             <div>
                 <p id="answer">
+                    <!-- create text in the background of each input box to give a hint as to what to enter(DONE)-->
+
+                    <!-- Create a validation message red error message beneath each input if there is not the correct input-->
+
+                    <!-- if a state does not have a minimum wage law show a message that lets them know it is defaulting to the federal minimum wage-->
+
+                    <!-- if under the federal minimum wage send a message that they are likely eligable for financial assistance-->
                 </p>
             </div>
             <div>
