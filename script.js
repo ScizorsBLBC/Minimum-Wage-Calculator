@@ -1,5 +1,13 @@
+
+
+
+
 // Now we need to define each state and its minimum wage
 const federalWage = 7.25;
+const stateYouLiveInElement = document.querySelector('#stateYouLiveIn');
+const numWeeksWorkedElement = document.querySelector('#numWeeksWorked');
+const hoursPerWeekWorkedElement = document.querySelector('#hoursPerWeek');
+const answerElement = document.querySelector('#answer');
   const wages = [
     { name: 'Alabama', abbreviation: 'AL' }, 
     { name: 'Alaska', abbreviation: 'AK', wage: 9.84 }, 
@@ -79,7 +87,6 @@ wages.forEach((stateWageObject) => {
 const onButtonClick = () => {
   let isValid = true
   // Need variable for num of weeks per year worked
-  const numWeeksWorkedElement = document.querySelector('#numWeeksWorked');
   const numWeeksWorked = Number(numWeeksWorkedElement.value);
   console.log(typeof numWeeksWorked);
   const numWeeksWorkedError = document.querySelector('#numWeeksWorkedError');
@@ -91,7 +98,6 @@ const onButtonClick = () => {
   }
 
   // I need the variable for how many hours per week worked
-  const hoursPerWeekWorkedElement = document.querySelector('#hoursPerWeek');
   const hoursPerWeekWorked = Number(hoursPerWeekWorkedElement.value);
   console.log(typeof hoursPerWeekWorked, hoursPerWeekWorked);
   const hoursPerWeekWorkedError = document.querySelector('#hoursPerWeekError');
@@ -103,7 +109,6 @@ const onButtonClick = () => {
   }
 
   // Need variable for which state you live in
-  const stateYouLiveInElement = document.querySelector('#stateYouLiveIn');
   const stateYouLiveIn = stateYouLiveInElement.value;
   console.log(typeof stateYouLiveIn, stateYouLiveIn);
   const stateYouLiveInError = document.querySelector('#stateYouLiveInError');
@@ -130,15 +135,16 @@ const onButtonClick = () => {
     }
   
   };
-    
-  // display the result on screen
-  const answerElement = document.querySelector('#answer');
+  
+ // how to Format the answer to include the numbers as us dollars???
+ 
+
+  // display the result on screen in dollars 
   if (isValid === true) {
-    answerElement.innerText = numWeeksWorked * hoursPerWeekWorked * minimumWage;
+    answerElement.innerText = "$" + numWeeksWorked * hoursPerWeekWorked * minimumWage;
   } else {
     answerElement.innerText = 'ERROR: Please fix all errors above';
   }
-  
 };
    
 // what happens when they click the button in each case
@@ -146,3 +152,38 @@ const onButtonClick = () => {
 const htmlElement= document.querySelector('button');
 htmlElement.addEventListener('click', onButtonClick);
 console.log(htmlElement);
+
+// Disable button until all inputs are filled
+const buttonElement = document.querySelector('#button');
+
+  // set disabled state to true
+const BUTTON_TEXT_ENABLED = "Find out your minimum wage salary";
+const BUTTON_TEXT_DISABLED = "Enter info above and select your state";
+buttonElement.disabled = true;
+buttonElement.innerText = BUTTON_TEXT_DISABLED;
+
+
+  // set event listener for inputs to know when there are key presses and when the drop down menu has been set
+  // 
+function inputsHaveValues() {
+  // if inputsHaveValues === false button is disabled
+
+  if (numWeeksWorkedElement.value === '' 
+    || hoursPerWeekWorkedElement.value === '' 
+    || stateYouLiveInElement.value === ''
+    ) {
+    buttonElement.disabled = true;
+    buttonElement.innerText = BUTTON_TEXT_DISABLED;
+  } else {
+    buttonElement.disabled = false;
+    buttonElement.innerText = BUTTON_TEXT_ENABLED;
+  }
+};
+
+numWeeksWorkedElement.addEventListener('change', inputsHaveValues);
+hoursPerWeekWorkedElement.addEventListener('change', inputsHaveValues);
+stateYouLiveInElement.addEventListener('change', inputsHaveValues);
+
+// Make inputs red so you can see where to input info
+
+// Make the answer have a dollar sign before it.

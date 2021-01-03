@@ -1,68 +1,79 @@
 <html>
     <head>
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" rel="stylesheet">
+        <link href="./style.css" rel="stylesheet">
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         
     </head>
     <body>
-        <div> 
-            <h1> Around how much would you make if you only made minimum wage in your US State?
-            </h1>
-        
-            <div>
-                <label>
-                    How many weeks per year do you typically work?
-                </label>
-                <input 
-                    type="number"
-                    id="numWeeksWorked"
-                    placeholder="ex: 52"
-                />
-                <p id="numWeeksWorkedError"> </p>
-            </div>
-            <div>
-                <label>
-                    Around how many hours per week do you work?
-                </label>
-                <input 
-                    type="number" 
-                    id="hoursPerWeek"
-                    placeholder="ex: 40"
-                />
-                <p id="hoursPerWeekError"> </p>
-            </div>
-            <div>
-                <select id="stateYouLiveIn"> 
-                    <option value=""> 
+        <main>
+            <header> 
+                <h1> Around how much would you make if you only made minimum wage in your US State?
+                </h1>
+            </header>
+            <section id="inputBoxes">
+                <div>
+                    <label for="numWeeksWorked">
+                        How many weeks per year do you typically work?
+                    </label>
+                    <input 
+                        type="number"
+                        id="numWeeksWorked"
+                        placeholder="ex: 52"
+                    />
+                    <p id="numWeeksWorkedError"> </p>
+                </div>
+                <div>
+                    <label for="hoursPerWeek">
+                        Around how many hours per week do you work?
+                    </label>
+                    <input 
+                        type="number" 
+                        id="hoursPerWeek"
+                        placeholder="ex: 40"
+                    />
+                    <p id="hoursPerWeekError"> </p>
+                </div>
+                <div>
+                    <label for="stateYouLiveIn">
                         Select the State you live in
-                    </option>
-                </select>
-                <p id="stateYouLiveInError"> </p>
-            </div>
-            <div>
-                <button> 
-                    Find out your minimum wage salary
-                </button>
-            </div>
-            <div>
-                <p id="answer">
-                    <!-- create text in the background of each input box to give a hint as to what to enter(DONE)-->
+                    </label>
+                        <select id="stateYouLiveIn"> 
+                            <option value=""> 
+                                Select your State
+                            </option>
+                        </select>
+                        <p id="stateYouLiveInError"> </p>
+                </div>
+                <div id="divButton">
+                    <button id="button"> 
+                        Find out your minimum wage salary
+                    </button>
+                </div>
+                <div>
+                    <p id="answer">
+                        <!-- create text in the background of each input box to give a hint as to what to enter(DONE)-->
 
-                    <!-- Create a validation message red error message beneath each input if there is not the correct input-->
+                        <!-- Create a validation message red error message beneath each input if there is not the correct input-->
 
-                    <!-- if a state does not have a minimum wage law show a message that lets them know it is defaulting to the federal minimum wage-->
+                        <!-- if a state does not have a minimum wage law show a message that lets them know it is defaulting to the federal minimum wage-->
 
-                    <!-- if under the federal minimum wage send a message that they are likely eligable for financial assistance-->
-                </p>
-            </div>
-            <div>
-                <small>
-                    Note: We do not save or send your data anywhere - all calculations are done on your own browser. You can <a href="https://glitch.com/edit/#!/minimum-wage?path=client.js:69:4">view the source of this app on Glitch</a> to see how its done.
-                </small>
-            </div>
-            <hr/>
+                        <!-- if under the federal minimum wage send a message that they are likely eligable for financial assistance-->
+                    </p>
+                </div>
+                <div>
+                    <small>
+                        Note: We do not save or send your data anywhere - all calculations are done on your own browser. You can <a href="https://glitch.com/edit/#!/minimum-wage?path=client.js:69:4">view the source of this app on Glitch</a> to see how its done.
+                    </small>
+                </div>
+            </section>
+        </main>
+        <footer>
             <p>
                 *This data was gathered January 22, 2018 from <a href="https://www.dol.gov/whd/minwage/america.htm">the US Department of Labor</a> at which the data came from January 1, 2018. Wage circumstances can be complex, <a href="https://www.dol.gov/whd/contacts/state_of.htm"> so check your state's labor sites for more info.</a>
             </p>
-        </div>
+        </footer>
     </body>
     <script src="script.js"> </script>
 </html>
