@@ -84,13 +84,16 @@ wages.forEach((stateWageObject) => {
 });
 
 // All this happens upon button click
+const numWeeksWorkedDiv = document.querySelector('.numWeeksWorkedDiv');
 const onButtonClick = () => {
   let isValid = true
   // Need variable for num of weeks per year worked
   const numWeeksWorked = Number(numWeeksWorkedElement.value);
   console.log(typeof numWeeksWorked);
+  numWeeksWorkedDiv.classList.remove("invalidInput");
   const numWeeksWorkedError = document.querySelector('#numWeeksWorkedError');
   if (numWeeksWorked > 52 || numWeeksWorked < 1) {
+    numWeeksWorkedDiv.classList.add("invalidInput");
     numWeeksWorkedError.innerText = 'ERROR: Enter a number between 1 and 52'
     isValid = false;
   } else {
@@ -98,10 +101,13 @@ const onButtonClick = () => {
   }
 
   // I need the variable for how many hours per week worked
+  const hoursPerWeekWorkedDiv = document.querySelector('.hoursPerWeekWorkedDiv');
   const hoursPerWeekWorked = Number(hoursPerWeekWorkedElement.value);
   console.log(typeof hoursPerWeekWorked, hoursPerWeekWorked);
+  hoursPerWeekWorkedDiv.classList.remove("invalidInput");
   const hoursPerWeekWorkedError = document.querySelector('#hoursPerWeekError');
   if (hoursPerWeekWorked > 168 || hoursPerWeekWorked < 1) {
+    hoursPerWeekWorkedDiv.classList.add("invalidInput");
     hoursPerWeekWorkedError.innerText = 'ERROR: Enter a number between 1 and 168'
     isValid = false;
   } else {
@@ -110,9 +116,12 @@ const onButtonClick = () => {
 
   // Need variable for which state you live in
   const stateYouLiveIn = stateYouLiveInElement.value;
+  const stateYouLiveInDiv = document.querySelector('.stateYouLiveInDiv');
   console.log(typeof stateYouLiveIn, stateYouLiveIn);
+  stateYouLiveInDiv.classList.remove("invalidInput");
   const stateYouLiveInError = document.querySelector('#stateYouLiveInError');
   if (stateYouLiveIn === '') {
+    stateYouLiveInDiv.classList.add("invalidInput");
     stateYouLiveInError.innerText = 'ERROR: Please select your state from the drop down menu'
     isValid = false;
   } else {
@@ -140,9 +149,11 @@ const onButtonClick = () => {
  
 
   // display the result on screen in dollars 
+ answerElement.classList.remove("thereWasAnError");
   if (isValid === true) {
-    answerElement.innerText = "$" + numWeeksWorked * hoursPerWeekWorked * minimumWage;
+    answerElement.innerText = "$" + (numWeeksWorked * hoursPerWeekWorked * minimumWage).toLocaleString(undefined, {minimumFractionDigits:2, maximumFractionDigits:2});
   } else {
+    answerElement.classList.add("thereWasAnError");
     answerElement.innerText = 'ERROR: Please fix all errors above';
   }
 };

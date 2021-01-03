@@ -13,18 +13,20 @@
                 </h1>
             </header>
             <section id="inputBoxes">
-                <div>
+                <div class="field numWeeksWorkedDiv">
                     <label for="numWeeksWorked">
                         How many weeks per year do you typically work?
                     </label>
                     <input 
-                        type="number"
+                        type="number" 
+                        min="0"
+                        max="52"
                         id="numWeeksWorked"
                         placeholder="ex: 52"
                     />
                     <p id="numWeeksWorkedError"> </p>
                 </div>
-                <div>
+                <div class="field hoursPerWeekWorkedDiv">
                     <label for="hoursPerWeek">
                         Around how many hours per week do you work?
                     </label>
@@ -32,10 +34,12 @@
                         type="number" 
                         id="hoursPerWeek"
                         placeholder="ex: 40"
+                        min="0"
+                        max="168"
                     />
                     <p id="hoursPerWeekError"> </p>
                 </div>
-                <div>
+                <div class="field stateYouLiveInDiv">
                     <label for="stateYouLiveIn">
                         Select the State you live in
                     </label>
@@ -58,8 +62,7 @@
                         <!-- Create a validation message red error message beneath each input if there is not the correct input-->
 
                         <!-- if a state does not have a minimum wage law show a message that lets them know it is defaulting to the federal minimum wage-->
-
-                        <!-- if under the federal minimum wage send a message that they are likely eligable for financial assistance-->
+                        
                     </p>
                 </div>
                 <div>

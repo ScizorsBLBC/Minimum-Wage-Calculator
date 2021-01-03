@@ -8,6 +8,23 @@ body{
    
 }
 
+input:invalid {
+  background-color:  #942c2c;
+}
+
+form:invalid {
+  border: 5px solid  #800000;
+}
+
+input:required {
+  border-color: #800000;
+  border-width: 3px;
+}
+
+input:required:invalid {
+  border-color: #c00000;
+}
+
 
 header{
     margin:20px;
@@ -22,8 +39,12 @@ section{
 section div:not(#divButton){
     display:flex;
     flex-direction:column;
-
 }
+
+.invalidInput label, .invalidInput p, p.thereWasAnError  {
+    color:red;
+}
+
 
 select {
     max-width:150px;
@@ -39,27 +60,4 @@ footer{
     border-top:2px solid lightslategray;
 }
 
-  input:invalid {
-    background-color:  #942c2c;
-  }
-  
-  form:invalid {
-    border: 5px solid  #800000;
-  }
-  
-  input:valid {
-    background-color: whitesmoke;
-  }
-  
-  form:valid {
-    border: 5px solid whitesmoke;
-  }
-  
-  input:required {
-    border-color: #800000;
-    border-width: 3px;
-  }
-  
-  input:required:invalid {
-    border-color: #c00000;
-  }
+ 
